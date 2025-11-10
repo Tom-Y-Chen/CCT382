@@ -1,0 +1,564 @@
+:root {
+    --atari-color: #ff6b6b;
+    --nes-color: #485460;
+    --playstation-color: #1e3c72;
+    --dreamcast-color: #11998e;
+    --text-dark: #2c3e50;
+    --text-light: #f8f9fa;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f4 100%);
+    padding-top: 70px;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.nav-logo span {
+    color: var(--playstation-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+/* Fixed width container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    position: relative;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Header Strip */
+.header-strip {
+    height: 8px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.atari .header-strip { background: linear-gradient(90deg, #ff6b6b, #ee5a24); }
+.nes .header-strip { background: linear-gradient(90deg, #485460, #28313b); }
+.playstation .header-strip { background: linear-gradient(90deg, #1e3c72, #2a5298); }
+.dreamcast .header-strip { background: linear-gradient(90deg, #11998e, #38ef7d); }
+.introduction .header-strip { background: linear-gradient(90deg, #667eea, #764ba2); }
+
+/* Typography */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.era-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    font-size: 2.5rem;
+}
+
+.era-description {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.highlight {
+    background: linear-gradient(120deg, rgba(255,215,0,0.2), rgba(255,215,0,0));
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.quote {
+    font-style: italic;
+    text-align: center;
+    margin: 40px 0;
+    padding: 25px;
+    background: #f8f9fa;
+    border-left: 4px solid #4ecdc4;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Console Image */
+.console-image {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.console-image img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.console-title {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+/* Games List - Vertical Layout */
+.games-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.game-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.game-image {
+    height: 180px;
+    width: 250px;
+    object-fit: contain;
+    background: linear-gradient(45deg, #f0f2f5, #e2e4e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-right: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.game-info {
+    flex: 1;
+}
+
+.game-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.game-year-platform {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.game-content {
+    padding: 25px;
+}
+
+.game-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Navigation Buttons */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.nav-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button.prev {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.nav-button.next {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+/* Era-specific styles */
+.atari .game-card:hover { border-color: var(--atari-color); }
+.nes .game-card:hover { border-color: var(--nes-color); }
+.playstation .game-card:hover { border-color: var(--playstation-color); }
+.dreamcast .game-card:hover { border-color: var(--dreamcast-color); }
+
+.atari .era-title { color: var(--atari-color); }
+.nes .era-title { color: var(--nes-color); }
+.playstation .era-title { color: var(--playstation-color); }
+.dreamcast .era-title { color: var(--dreamcast-color); }
+
+/* Home page specific styles */
+.home-container {
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.home-title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #1a1a2e;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+.home-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: #4a4a6a;
+    font-style: italic;
+}
+
+.home-intro {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    color: #2c3e50;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.era-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.era-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.era-card.atari { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); }
+.era-card.nes { background: linear-gradient(135deg, #485460 0%, #28313b 100%); }
+.era-card.playstation { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+.era-card.dreamcast { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+
+.era-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.era-card p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.start-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff8a00 0%, #da1b60 100%);
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.artifacts-count {
+    background: #2c3e50;
+    color: white;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* References section for introduction page */
+.references-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 3px solid #3498db;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.references-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.reference-item {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+    
+    .nav-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .home-title {
+        font-size: 2.8rem;
+    }
+    
+    .home-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .home-intro {
+        font-size: 1rem;
+    }
+    
+    .era-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .container {
+        padding: 25px 15px;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .game-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links a {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .home-title {
+        font-size: 2.2rem;
+    }
+    
+    .home-subtitle {
+        font-size: 1rem;
+    }
+    
+    .era-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .game-title {
+        font-size: 1.5rem;
+    }
+    
+    .start-button, .nav-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+    
+    .game-image {
+        height: 150px;
+    }
+}
+
+.wiki-link {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e8f4ff;
+    border-radius: 8px;
+    border-left: 3px solid #3498db;
+}
+
+.wiki-link a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.wiki-link a:hover {
+    text-decoration: underline;
+    color: #1a5276;
+}
